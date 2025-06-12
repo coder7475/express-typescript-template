@@ -1,6 +1,10 @@
 {
   "name": "express-ts-docker-template",
   "version": "1.0.0",
+  "description": "An express starter with typescript",
+  "author": "Robiul Hossain",
+  "licence": "MIT",
+  "repository": "coder7475/express-typescript-template",
   "main": "dist/server.js",
   "scripts": {
     "dev": "node --import=tsx --watch src/server.ts",
