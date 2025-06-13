@@ -1,14 +1,20 @@
 import express from "express";
-import dotenv from "dotenv";
 import indexRouter from "./routes/index.routes";
 import userRoute from "./routes/users.routes";
+import globalErrorHandler from "./middlewares/globalErrorHandler";
 
-dotenv.config();
-
+// Initialize the express app
 const app = express();
 
+// middlewares
 app.use(express.json());
+
+// routes
 app.use("/", indexRouter);
 app.use("/users", userRoute);
+
+
+// global error handler
+app.use(globalErrorHandler);
 
 export default app;
