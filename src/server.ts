@@ -1,5 +1,5 @@
-import app from "./app";
-import { env } from "./configs/envConfig";
+import app from "@/app";
+import { env } from "@/configs/envConfig";
 
 const server = app.listen(env.PORT, () => {
   console.log(
