@@ -1,5 +1,5 @@
 import express from "express";
-import indexRouter from "@/routes/index.routes";
+import indexRouter from "@/routes";
 import userRoute from "@/routes/users.routes";
 import globalErrorHandler from "@/middlewares/globalErrorHandler";
 
