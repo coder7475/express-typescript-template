@@ -7,6 +7,7 @@ const server: Server = app.listen(env.PORT, () => {
 	console.log(`🚀 Server (${env.NODE_ENV}) running at http://${env.HOST}:${env.PORT}`);
 });
 
+
 // Graceful shutdown handler
 const onCloseSignal = () => {
 	console.log("🛑 SIGINT/SIGTERM received, shutting down gracefully...");

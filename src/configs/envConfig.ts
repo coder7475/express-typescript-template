@@ -26,7 +26,7 @@ const envSchema = z.object({
 		}),
 	HOST: z.string().default("localhost"),
 	NODE_ENV: z.enum(["development", "production", "test"]).default("development"),
-	MONGODB_URI: z.string().url("MONGODB_URI must be a valid URL"),
+	MONGODB_URI: z.string(),
 });
 
 // Validate process.env and infer typed env object
