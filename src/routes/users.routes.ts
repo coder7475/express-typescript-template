@@ -1,11 +1,14 @@
+import { User } from "@/models/users.model";
 import { Router } from "express";
 
 const userRoute = Router();
 
-userRoute.get("/", (_req, res) => {
+userRoute.get("/", async (_req, res) => {
+  const allUsers = await User.find();
   res.json({
     status: 200,
-    message: "This is users route",
+    message: "Fetched Successfully",
+    data: allUsers,
   });
 });
 
