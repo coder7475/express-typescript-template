@@ -1,6 +1,7 @@
-import mongoose from "mongoose";
+import { IUser } from "@/interfaces/usert.interface";
+import { Schema, model } from "mongoose";
 
-const userSchema = new mongoose.Schema(
+const userSchema = new Schema<IUser>(
   {
     name: { type: String, required: true },
     age: { type: Number, min: 0, max: 120 },
@@ -9,9 +10,9 @@ const userSchema = new mongoose.Schema(
     createdAt: { type: Date, default: Date.now },
   },
   {
-    timestamps: true, // adds createdAt and updatedAt
-    versionKey: false, // disables __v field
+    timestamps: true,
+    versionKey: false,
   },
 );
 
-export const User = mongoose.model("User", userSchema);
+export const User = model<IUser>("User", userSchema);
