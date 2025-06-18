@@ -1,15 +1,8 @@
-import { User } from "@/models/users.model";
+import controllers from "@/controller";
 import { Router } from "express";
 
 const userRoute = Router();
 
-userRoute.get("/", async (_req, res) => {
-  const allUsers = await User.find();
-  res.json({
-    status: 200,
-    message: "Fetched Successfully",
-    data: allUsers,
-  });
-});
+userRoute.get("/", controllers.userController);
 
 export default userRoute;
