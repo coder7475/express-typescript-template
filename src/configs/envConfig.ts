@@ -24,7 +24,7 @@ const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || "localhost";
 const NODE_ENV = process.env.NODE_ENV || "development";
 const MONGODB_URI =
-  process.MONGODB_URI || "mongodb://127.0.0.1:27017/your_db_name";
+  process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/your_db_name";
 
 export const env = {
   PORT,
