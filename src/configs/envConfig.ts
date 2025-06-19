@@ -1,10 +1,10 @@
 import dotenv from "dotenv";
+import { z } from "zod";
 
 // Load env variables from .env with error handling
 try {
 	const result = dotenv.config();
 
-	// Check if .env file was loaded successfully
 	if (result.error) {
 		console.warn("Warning: .env file not found or could not be loaded.\n", result.error.message);
 		process.exit(1);
@@ -14,12 +14,29 @@ try {
 	process.exit(1);
 }
 
-const PORT = process.env.PORT || 3000;
-const HOST = process.env.HOST || "localhost";
-const NODE_ENV = process.env.NODE_ENV || "development";
+// ✅ Define Zod schema for validation
+const envSchema = z.object({
+	PORT: z
+		.string()
+		.default("3000")
+		.transform(Number)
+		.refine((val) => !isNaN(val), {
+			message: "PORT must be a valid number",
+		}),
+	HOST: z.string().default("localhost"),
+	NODE_ENV: z.enum(["development", "production", "test"]).default("development"),
+	DB_URI: z.string().url("DB_URI must be a valid URL"),
+});
 
-export const env = {
-	PORT,
-	HOST,
-	NODE_ENV,
-};
+// ✅ Validate process.env
+const parsedEnv = envSchema.safeParse(process.env);
+
+if (!parsedEnv.success) {
+	console.error("❌ Invalid environment configuration:");
+	console.error(parsedEnv.error.format());
+	process.exit(1);
+}
+
+// ✅ Export validated, typed, and transformed env values
+export const env = parsedEnv.data;
+
