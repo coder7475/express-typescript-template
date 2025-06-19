@@ -1,29 +1,32 @@
 {
-  "name": "express-ts-docker-template",
-  "version": "1.0.0",
-  "description": "An express starter with typescript",
-  "author": "Robiul Hossain",
-  "licence": "MIT",
-  "repository": "coder7475/express-typescript-template",
-  "main": "dist/server.js",
-  "scripts": {
-    "dev": "node --import=tsx --watch src/server.ts",
-    "build": "tsc -p tsconfig.build.json",
-    "start": "node dist/server.js"
-  },
-  "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^16.0.3",
-    "express": "^4.18.2",
-    "helmet": "^8.1.0",
-    "mongoose": "^8.16.0"
-  },
-  "devDependencies": {
-    "@types/cors": "^2.8.19",
-    "@types/express": "^4.17.21",
-    "@types/node": "^20.4.2",
-    "tsx": "^4.20.2",
-    "typescript": "^5.2.2"
-  },
-  "packageManager": "pnpm@10.12.1"
+	"name": "express-ts-docker-template",
+	"version": "1.0.0",
+	"description": "An express starter with typescript",
+	"author": "Robiul Hossain",
+	"licence": "MIT",
+	"repository": "coder7475/express-typescript-template",
+	"main": "dist/server.js",
+	"scripts": {
+		"dev": "node --import=tsx --watch src/server.ts",
+		"build": "tsc -p tsconfig.build.json",
+		"start": "node dist/server.js",
+		"lint": "biome lint --fix",
+		"format": "biome format --write"
+	},
+	"dependencies": {
+		"cors": "^2.8.5",
+		"dotenv": "^16.0.3",
+		"express": "^4.18.2",
+		"helmet": "^8.1.0",
+		"mongoose": "^8.16.0"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.0.0",
+		"@types/cors": "^2.8.19",
+		"@types/express": "^4.17.21",
+		"@types/node": "^20.4.2",
+		"tsx": "^4.20.2",
+		"typescript": "^5.2.2"
+	},
+	"packageManager": "pnpm@10.12.1"
 }

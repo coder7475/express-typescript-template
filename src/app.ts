@@ -13,9 +13,9 @@ app.use(express.json());
 
 // middlewares
 app.use(cors()); // allows to control cors policies
-app.use(express.json());  // parse json requests
+app.use(express.json()); // parse json requests
 app.use(express.urlencoded({ extended: true })); // parse incoming form data
-app.use(helmet()) // add security http headers: csp
+app.use(helmet()); // add security http headers: csp
 
 
 // routes
