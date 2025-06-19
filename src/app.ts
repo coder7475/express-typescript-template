@@ -13,7 +13,8 @@ app.use(express.json());
 app.use("/", indexRouter);
 app.use("/users", userRoute);
 
+
 // global error handler
-app.use(globalErrorHandler);
+app.use(globalErrorHandler());
 
 export default app;

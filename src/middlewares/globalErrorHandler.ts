@@ -12,4 +12,4 @@ const globalErrorHandler: ErrorRequestHandler = (err, _req, res, _next) => {
   });
 };
 
-export default globalErrorHandler;
+export default (): ErrorRequestHandler => globalErrorHandler;
