@@ -26,7 +26,10 @@ async function connectToMongoDB() {
 connectToMongoDB().catch((err) => console.error(err));
 
 // middlewares
-app.use(express.json());
+app.use(cors()); // allows to control cors policies
+app.use(express.json());  // parse json requests
+app.use(express.urlencoded({ extended: true })); // parse incoming form data
+app.use(helmet()) // add security http headers: csp
 
 // middlewares
 app.use(cors()); // allows to control cors policies
