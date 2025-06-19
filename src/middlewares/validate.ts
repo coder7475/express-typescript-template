@@ -1,5 +1,5 @@
-import type { ZodSchema } from "zod";
-import type { Request, Response, NextFunction } from "express";
+import { ZodSchema } from "zod";
+import { Request, Response, NextFunction } from "express";
 
 export const validate =
   (schema: ZodSchema<any>, source: "body" | "params" | "query" = "body") =>

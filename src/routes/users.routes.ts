@@ -1,7 +1,9 @@
+import { type Request, type Response, Router } from "express";
+
 import { userController } from "@/controller/user.controller";
 import { middlewares } from "@/middlewares";
 import { createUserSchema } from "@/schemas/user.schema";
-import {  Router } from "express";
+
 
 const userRoute: Router = Router();
 
