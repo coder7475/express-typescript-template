@@ -38,9 +38,10 @@ app.use(helmet());
 app.use("/", indexRouter);
 app.use("/users", userRoute);
 
-// Not found route handler
+
+// not found routes
 app.use(middlewares.notFoundRoute);
-// Global error handler
+// global error handler
 app.use(middlewares.globalErrorHandler);
 
 export default app;
