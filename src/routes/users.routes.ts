@@ -1,8 +1,8 @@
-import { Router } from "express";
+import { type Request, type Response, Router } from "express";
 
-const userRoute = Router();
+const userRoute: Router = Router();
 
-userRoute.get("/", (_req, res) => {
+userRoute.get("/", (_req: Request, res: Response) => {
 	res.json({
 		status: 200,
 		message: "This is users route",
