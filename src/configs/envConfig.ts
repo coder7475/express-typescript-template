@@ -14,21 +14,22 @@ try {
 	process.exit(1);
 }
 
-// ✅ Define Zod schema for validation
+// Define Zod schema for validation and transformation
 const envSchema = z.object({
 	PORT: z
 		.string()
 		.default("3000")
-		.transform(Number)
-		.refine((val) => !isNaN(val), {
-			message: "PORT must be a valid number",
+		.transform((val) => {
+			const parsed = Number(val);
+			if (Number.isNaN(parsed)) throw new Error("PORT must be a valid number");
+			return parsed;
 		}),
 	HOST: z.string().default("localhost"),
 	NODE_ENV: z.enum(["development", "production", "test"]).default("development"),
 	DB_URI: z.string().url("DB_URI must be a valid URL"),
 });
 
-// ✅ Validate process.env
+// Validate process.env and infer typed env object
 const parsedEnv = envSchema.safeParse(process.env);
 
 if (!parsedEnv.success) {
@@ -37,6 +38,6 @@ if (!parsedEnv.success) {
 	process.exit(1);
 }
 
-// ✅ Export validated, typed, and transformed env values
-export const env = parsedEnv.data;
+export type Env = z.infer<typeof envSchema>;
 
+export const env: Env = parsedEnv.data;
