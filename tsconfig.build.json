@@ -2,8 +2,20 @@
 	"extends": "./tsconfig.json",
 	"compilerOptions": {
 		"outDir": "dist",
-		"noEmit": false
+		"noEmit": false,
+		"baseUrl": "./src",
+		"target": "ESNext",
+		"module": "ESNext",
+		"moduleResolution": "Node",
+		"importsNotUsedAsValues": "remove",
+		"strict": true,
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+		"paths": {
+			"@/*": ["*"]
+		}
 	},
-	"include": ["src"],
+	"include": ["src/**/*"],
 	"exclude": ["node_modules"]
 }

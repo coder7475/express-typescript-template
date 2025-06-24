@@ -8,7 +8,7 @@
 	"main": "dist/server.js",
 	"scripts": {
 		"dev": "node --import=tsx --watch src/server.ts",
-		"build": "tsc -p tsconfig.build.json",
+		"build": "tsc -p tsconfig.build.json && tsup",
 		"start": "node dist/server.js",
 		"lint": "biome lint --fix",
 		"format": "biome format --write"
@@ -26,8 +26,25 @@
 		"@types/cors": "^2.8.19",
 		"@types/express": "^4.17.21",
 		"@types/node": "^20.4.2",
+		"tsup": "^8.5.0",
 		"tsx": "^4.20.2",
 		"typescript": "^5.2.2"
+	},
+	"tsup": {
+		"entry": [
+			"src/server.ts"
+		],
+		"outDir": "dist",
+		"format": [
+			"esm",
+			"cjs"
+		],
+		"target": "es2020",
+		"sourcemap": true,
+		"clean": true,
+		"dts": true,
+		"splitting": false,
+		"skipNodeModulesBundle": true
 	},
 	"packageManager": "pnpm@10.12.1"
 }
