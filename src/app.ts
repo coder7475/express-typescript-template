@@ -9,8 +9,10 @@ import express, { type Express } from "express";
 
 // Initialize the express app
 const app: Express = express();
-
 // connect to database
+/*
+ * Example conncting to MongoDB using mongoose
+ * 
 async function connectToMongoDB() {
 	try {
 		await mongoose.connect(env.MONGODB_URI, {
@@ -25,11 +27,12 @@ async function connectToMongoDB() {
 
 connectToMongoDB().catch((err) => console.error(err));
 
-// middlewares
-app.use(cors()); // allows to control cors policies
-app.use(express.json()); // parse json requests
-app.use(express.urlencoded({ extended: true })); // parse incoming form data
-app.use(helmet()); // add security http headers: csp
+ */
+// Middlewares
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(helmet());
 
 // Routes
 app.use("/", indexRouter);
