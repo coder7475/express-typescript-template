@@ -9,10 +9,8 @@ import express, { type Express } from "express";
 
 // Initialize the express app
 const app: Express = express();
+
 // connect to database
-/*
- * Example conncting to MongoDB using mongoose
- * 
 async function connectToMongoDB() {
 	try {
 		await mongoose.connect(env.MONGODB_URI, {
@@ -37,7 +35,6 @@ app.use(helmet());
 // Routes
 app.use("/", indexRouter);
 app.use("/users", userRoute);
-
 
 // not found routes
 app.use(middlewares.notFoundRoute);
