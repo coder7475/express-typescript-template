@@ -31,19 +31,13 @@ app.use(express.json()); // parse json requests
 app.use(express.urlencoded({ extended: true })); // parse incoming form data
 app.use(helmet()); // add security http headers: csp
 
-// middlewares
-app.use(cors()); // allows to control cors policies
-app.use(express.json()); // parse json requests
-app.use(express.urlencoded({ extended: true })); // parse incoming form data
-app.use(helmet()); // add security http headers: csp
-
-// routes
+// Routes
 app.use("/", indexRouter);
 app.use("/users", userRoute);
 
-// not found routes
+// Not found route handler
 app.use(middlewares.notFoundRoute);
-// global error handler
+// Global error handler
 app.use(middlewares.globalErrorHandler);
 
 export default app;
