@@ -1,7 +1,9 @@
+import { type Server } from "node:http";
+
 import app from "@/app";
 import { env } from "@/configs/envConfig";
 
-const server = app.listen(env.PORT, () => {
+const server: Server = app.listen(env.PORT, () => {
 	console.log(`🚀 Server (${env.NODE_ENV}) running at http://${env.HOST}:${env.PORT}`);
 });
 

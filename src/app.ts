@@ -1,26 +1,26 @@
-import express from "express";
-import indexRouter from "@/routes";
-import userRoute from "@/routes/users.routes";
-import { middlewares } from "@/middlewares";
+import express, { type Express } from "express";
 import helmet from "helmet";
 import cors from "cors";
 
-// Initialize the express app
-const app = express();
+import indexRouter from "@/routes";
+import userRoute from "@/routes/users.routes";
+import { middlewares } from "@/middlewares";
 
-// middlewares
-app.use(cors()); // allows to control cors policies
-app.use(express.json()); // parse json requests
-app.use(express.urlencoded({ extended: true })); // parse incoming form data
-app.use(helmet()); // add security http headers: csp
+const app: Express = express();
 
-// routes
+// Middlewares
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(helmet());
+
+// Routes
 app.use("/", indexRouter);
 app.use("/users", userRoute);
 
-// not found routes
+// Not found route handler
 app.use(middlewares.notFoundRoute);
-// global error handler
+// Global error handler
 app.use(middlewares.globalErrorHandler);
 
 export default app;
