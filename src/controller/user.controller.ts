@@ -1,6 +1,6 @@
-import { Request, Response } from "express";
+import type { Request, Response } from "express";
 import { User } from "@/models/users.model";
-import { CreateUserInput } from "@/schemas/user.schema";
+import type { CreateUserInput } from "@/schemas/user.schema";
 
 const getUsers = async (
   _req: Request,
