@@ -1,8 +1,8 @@
-import { Router } from "express";
+import { type Request, type Response, Router } from "express";
 
-const indexRouter = Router();
+const indexRouter: Router = Router();
 
-indexRouter.get("/", (_req, res) => {
+indexRouter.get("/", (_req: Request, res: Response) => {
 	res.send("Hello from Express + TypeScript!");
 });
 
