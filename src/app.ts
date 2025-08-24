@@ -25,7 +25,6 @@ async function connectToMongoDB() {
 
 connectToMongoDB().catch((err) => console.error(err));
 
- */
 // Middlewares
 app.use(cors());
 app.use(express.json());

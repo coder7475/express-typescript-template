@@ -1,13 +1,11 @@
-import { type Request, type Response, Router } from "express";
+import { Router } from "express";
 
 import { userController } from "@/controller/user.controller";
-import { middlewares } from "@/middlewares";
 import { createUserSchema } from "@/schemas/user.schema";
-
 
 const userRoute: Router = Router();
 
-userRoute.post("/", middlewares.validate(createUserSchema), userController.createUser);
+userRoute.post("/", userController.createUser);
 userRoute.get("/", userController.getUsers);
 
 export default userRoute;
